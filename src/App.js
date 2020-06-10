@@ -1,57 +1,97 @@
 import React, { Component } from 'react';
 
-// when setState methord takes object as argument
+// One way of passing Arguments
 /*
-
 class Student extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
+        state = {
+            id: {
+                Standard:"Second",
+                Freind:"Virat",
+                Home:"Rohini"
+            },
             name:"Rahul",
-            roll:this.props.roll
-        }
-    }
-    clicked = () => {
-        this.setState({name:"Jai"})
+        };
+    clicked = (id, e) => {
+        console.log(id.Home);
+        console.log(id.Standard);
+        console.log(id.Freind);
+        console.log(e);
+    };
+
+    clickedArg = e => { 
+        this.clicked(this.state.id, e);
     }
     render(){
         return( <div>
-                    <h1>Hello GeekyShows</h1>
-                    <h1>Hello,{this.state.name} Your Roll No. is {this.state.roll}</h1>
-                    <button onClick={this.clicked}>Click Me</button>
+                    <h1>Hello, {this.state.name}</h1>
+                    <button onClick={this.clickedArg}>Delete</button>
                  </div>
                 );
     }
 }
 
 export default Student;
+ */
+
+ //Second Way to pass Arguments
+
+ /*
+
+class Student extends Component{
+    state = {
+        id: {
+            Standard:"Second",
+            Freind:"Virat",
+            Home:"Rohini"
+        },
+        name:"Rahul",
+    };
+clicked = (id, e) => {
+    console.log(id.Home);
+    console.log(id.Standard);
+    console.log(id.Freind);
+    console.log(e);
+};
+
+render(){
+    return( <div>
+                <h1>Hello, {this.state.name}</h1>
+                <button onClick={e => { 
+                    this.clicked(this.state.id, e);
+                }}>Delete</button>
+             </div>
+            );
+}
+}
+
+export default Student;
 
 */
 
-// when setState methord takes function as argument
-
 
 class Student extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            name:"Rahul",
-            roll:this.props.roll
-        }
-    }
-    clicked = () => {
-        this.setState(function(state,props){
-            console.log(state.name);
-        });
-    }
-    render(){
-        return( <div>
-                    <h1>Hello GeekyShows</h1>
-                    <h1>Hello,{this.state.name} Your Roll No. is {this.state.roll}</h1>
-                    <button onClick={this.clicked}>Click Me</button>
-                 </div>
-                );
-    }
+    state = {
+        id: {
+            Standard:"Second",
+            Freind:"Virat",
+            Home:"Rohini"
+        },
+        name:"Rahul",
+    };
+clicked = (id, e) => {
+    console.log(id.Home);
+    console.log(id.Standard);
+    console.log(id.Freind);
+    console.log(e);
+};
+
+render(){
+    return( <div>
+                <h1>Hello, {this.state.name}</h1>
+                <button onClick={this.clicked.bind(this, this.state.id)}>Delete</button>
+             </div>
+            );
+}
 }
 
 export default Student;
