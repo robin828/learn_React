@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Teacher from "./App";
+import Student from "./App";
 
 
-ReactDOM.render(<Teacher name="vikas" clas="two" lang="hindi"/>, document.getElementById("root"));
+ReactDOM.render(<Student />, document.getElementById("root"));
 

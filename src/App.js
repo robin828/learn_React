@@ -1,38 +1,77 @@
-import React, {Component, Fragment} from "react";
-import PropTypes from "prop-types";
-class Apps extends Component{
-    render(){
-        return <Fragment>
+import React, { Component } from 'react';
 
-                    <h1>hi hello abey chal</h1>
-                    <h1>how are you</h1>
-                    <h1>Tell about yourself</h1>
-                </Fragment>
+/*
+
+
+// Class Type Event Handling
+
+
+// in console we see that this is undefined we solve this in 2 ways below
+// this can be used to implement state in our page
+class Student extends Component{
+    clicked(){
+        console.log("Button Clicked", this);
+    }
+    render(){
+        return( <div>
+                    <h1>Button Below</h1>
+                    <button onClick={this.clicked}>Click Me</button>
+                 </div>
+                );
     }
 }
 
-const Student = (props) => {
-    return <>
-                <h1>hi hello {props.name}</h1>
-                <h1>hi {props.clas}</h1>
-                <h1>hi {props.lang}</h1>
-            </>
+// First Way to resolve 'this' error is make arrow function. In arrow function , arrow function bind this keyword and 
+ // return object
+
+class Student extends Component{
+    clicked = () => {
+        console.log("Button Clicked", this);
+    }
+    render(){
+        return( <div>
+                    <h1>Button Below</h1>
+                    <button onClick={this.clicked}>Click Me</button>
+                 </div>
+                );
+    }
 }
 
-const Teacher = (props) => {
-    return <>
-                <Apps/>
-                <Student name="Robin" clas="twelth" lang="english"/>
-                <h1>hi Teacher {props.name}</h1>
-                <h1>hi {props.clas}</h1>
-                <h1>hi {props.lang}</h1>
-            </>
-}
-Teacher.propTypes = {
-    name: PropTypes.string,
-    lang: PropTypes.string,
-    clas: PropTypes.string
-};
+// Second is way is to bind this keyword manually using Constructor
 
- 
-export default Teacher;
+class Student extends Component{
+    constructor(props){
+        this.clicked = this.clicked.bind(this);
+    }
+    clicked(){
+        console.log("Button Clicked", this);
+    }
+    render(){
+        return( <div>
+                    <h1>Button Below</h1>
+                    <button onClick={this.clicked}>Click Me</button>
+                 </div>
+                );
+    }
+}
+
+*/
+
+// Function Type Event Handling
+
+function Student(props){
+    const clicked = () => {
+        console.log("Button Clicked");
+    }
+    return( <div>
+                <h1>Button Below</h1>
+                <button onClick={clicked}>Click Me</button>
+             </div>
+            );
+    }
+
+
+
+
+
+export default Student;
