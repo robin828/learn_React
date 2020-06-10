@@ -1,97 +1,15 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react'
 
-// One way of passing Arguments
-/*
-class Student extends Component{
-        state = {
-            id: {
-                Standard:"Second",
-                Freind:"Virat",
-                Home:"Rohini"
-            },
-            name:"Rahul",
-        };
-    clicked = (id, e) => {
-        console.log(id.Home);
-        console.log(id.Standard);
-        console.log(id.Freind);
-        console.log(e);
-    };
-
-    clickedArg = e => { 
-        this.clicked(this.state.id, e);
+export default function App() {
+    const nameStateVariable = useState("Rahul");
+    const clicked = () => {
+        nameStateVariable[1]("Robin");
     }
-    render(){
-        return( <div>
-                    <h1>Hello, {this.state.name}</h1>
-                    <button onClick={this.clickedArg}>Delete</button>
-                 </div>
-                );
-    }
+    
+    return <React.Fragment>
+            <h1>{nameStateVariable[0]}</h1>
+            <button type="button" onClick={clicked}>Change</button>
+    </React.Fragment>
+        
+    
 }
-
-export default Student;
- */
-
- //Second Way to pass Arguments
-
- /*
-
-class Student extends Component{
-    state = {
-        id: {
-            Standard:"Second",
-            Freind:"Virat",
-            Home:"Rohini"
-        },
-        name:"Rahul",
-    };
-clicked = (id, e) => {
-    console.log(id.Home);
-    console.log(id.Standard);
-    console.log(id.Freind);
-    console.log(e);
-};
-
-render(){
-    return( <div>
-                <h1>Hello, {this.state.name}</h1>
-                <button onClick={e => { 
-                    this.clicked(this.state.id, e);
-                }}>Delete</button>
-             </div>
-            );
-}
-}
-
-export default Student;
-
-*/
-
-
-class Student extends Component{
-    state = {
-        id: {
-            Standard:"Second",
-            Freind:"Virat",
-            Home:"Rohini"
-        },
-        name:"Rahul",
-    };
-clicked = (id, e) => {
-    console.log(id.Home);
-    console.log(id.Standard);
-    console.log(id.Freind);
-    console.log(e);
-};
-
-render(){
-    return( <div>
-                <h1>Hello, {this.state.name}</h1>
-                <button onClick={this.clicked.bind(this, this.state.id)}>Delete</button>
-             </div>
-            );
-}
-}
-
-export default Student;
