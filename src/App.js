@@ -1,77 +1,57 @@
 import React, { Component } from 'react';
 
+// when setState methord takes object as argument
 /*
-
-
-// Class Type Event Handling
-
-
-// in console we see that this is undefined we solve this in 2 ways below
-// this can be used to implement state in our page
-class Student extends Component{
-    clicked(){
-        console.log("Button Clicked", this);
-    }
-    render(){
-        return( <div>
-                    <h1>Button Below</h1>
-                    <button onClick={this.clicked}>Click Me</button>
-                 </div>
-                );
-    }
-}
-
-// First Way to resolve 'this' error is make arrow function. In arrow function , arrow function bind this keyword and 
- // return object
-
-class Student extends Component{
-    clicked = () => {
-        console.log("Button Clicked", this);
-    }
-    render(){
-        return( <div>
-                    <h1>Button Below</h1>
-                    <button onClick={this.clicked}>Click Me</button>
-                 </div>
-                );
-    }
-}
-
-// Second is way is to bind this keyword manually using Constructor
 
 class Student extends Component{
     constructor(props){
-        this.clicked = this.clicked.bind(this);
+        super(props);
+        this.state = {
+            name:"Rahul",
+            roll:this.props.roll
+        }
     }
-    clicked(){
-        console.log("Button Clicked", this);
+    clicked = () => {
+        this.setState({name:"Jai"})
     }
     render(){
         return( <div>
-                    <h1>Button Below</h1>
+                    <h1>Hello GeekyShows</h1>
+                    <h1>Hello,{this.state.name} Your Roll No. is {this.state.roll}</h1>
                     <button onClick={this.clicked}>Click Me</button>
                  </div>
                 );
     }
 }
 
+export default Student;
+
 */
 
-// Function Type Event Handling
+// when setState methord takes function as argument
 
-function Student(props){
-    const clicked = () => {
-        console.log("Button Clicked");
+
+class Student extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            name:"Rahul",
+            roll:this.props.roll
+        }
     }
-    return( <div>
-                <h1>Button Below</h1>
-                <button onClick={clicked}>Click Me</button>
-             </div>
-            );
+    clicked = () => {
+        this.setState(function(state,props){
+            console.log(state.name);
+        });
     }
-
-
-
-
+    render(){
+        return( <div>
+                    <h1>Hello GeekyShows</h1>
+                    <h1>Hello,{this.state.name} Your Roll No. is {this.state.roll}</h1>
+                    <button onClick={this.clicked}>Click Me</button>
+                 </div>
+                );
+    }
+}
 
 export default Student;
